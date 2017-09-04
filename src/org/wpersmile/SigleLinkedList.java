@@ -173,15 +173,20 @@ public class SigleLinkedList<E> {
     public void addFirst(E e){
         Node<E> firstNode=this.first;
         Node<E> newNode=new Node<E>(e,this.next);
-        //将newNode节点的next指向firstNode节点的next; 即newNode节点的next指向第二个节点。 ： 0 -> 2
-        newNode.next=first.next;
-        //将firstNode节点的next指向newNde节点;即firstNode节点的next指向newNode节点。 ：1 -> 0
-        firstNode.next=newNode;
-        //上面交换了firstNode和newNode的顺序，因此只需要交换各自节点的elem，就能实现头插。
-        //定义temp用于交换newNode和firstNode的elem元素。
-        E temp;
-        temp=firstNode.elem;
-        firstNode.elem=newNode.elem;
-        newNode.elem=temp;
+        if (firstNode==null){
+            this.first=newNode;
+        }
+        else {
+            //将newNode节点的next指向firstNode节点的next; 即newNode节点的next指向第二个节点。 ： 0 -> 2
+            newNode.next=first.next;
+            //将firstNode节点的next指向newNde节点;即firstNode节点的next指向newNode节点。 ：1 -> 0
+            firstNode.next=newNode;
+            //上面交换了firstNode和newNode的顺序，因此只需要交换各自节点的elem，就能实现头插。
+            //定义temp用于交换newNode和firstNode的elem元素。
+            E temp;
+            temp=firstNode.elem;
+            firstNode.elem=newNode.elem;
+            newNode.elem=temp;
+        }
     }
 }
