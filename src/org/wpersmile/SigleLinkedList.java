@@ -50,6 +50,7 @@ public class SigleLinkedList<E> {
         this.first=null;
     }
 
+
     /**
      * 添加新元素
      *如果队列为空，则新结点为首结点，否则把新结点指向队列最后一个结点
@@ -88,6 +89,7 @@ public class SigleLinkedList<E> {
             p=p.next;
         }
     }
+
     /**
      *在指定位置删除元素
      * 从 0 开始
@@ -112,36 +114,41 @@ public class SigleLinkedList<E> {
     }
 
     /**
-     * 返回链表所有元素集合
+     * 获取链表长度
      * @return
      */
-    @Override
-    public String toString(){
+    public int lenght(){
+        int lenght=0;
         Node<E> p=this.first;
         if (p==null){
-            return "[]";
+            return 0;
         }
-        String str="[";
-        while (p.next!=null){
-            str+=p.elem;
-            str+=",";
-            p=p.next;
+        else {
+            while (p.next!=null){
+                lenght++;
+                p=p.next;
+            }
+            //while循环少了链表最后一个元素的，应该还要多 + 1
+            lenght++;
         }
-        str+=p.elem+"]";
-        return str;
+        return lenght;
     }
 
     /**
      * 链表转数组
      */
+
     public void toArray(){
         Node<E> p=this.first;
         ArrayList<E> arrayList=new ArrayList<E>();
-        while (p.next!=null){
+        if (p!=null){
+            while (p.next!=null){
+                arrayList.add(p.elem);
+                p=p.next;
+            }
             arrayList.add(p.elem);
-            p=p.next;
         }
-        System.out.print(arrayList.toString());
+        System.out.println(arrayList.toString());
     }
 
     /**
@@ -188,5 +195,25 @@ public class SigleLinkedList<E> {
             firstNode.elem=newNode.elem;
             newNode.elem=temp;
         }
+    }
+
+    /**
+     * 返回链表所有元素集合
+     * @return
+     */
+    @Override
+    public String toString(){
+        Node<E> p=this.first;
+        if (p==null){
+            return "[]";
+        }
+        String str="[";
+        while (p.next!=null){
+            str+=p.elem;
+            str+="，";
+            p=p.next;
+        }
+        str+=p.elem+"]";
+        return str;
     }
 }
