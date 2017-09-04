@@ -128,7 +128,7 @@ public class SigleLinkedList<E> {
                 length++;
                 p=p.next;
             }
-            //while循环少了链表最后一个元素的，应该还要多 + 1
+            //while循环少了链表最后一个元素的，因此还要 + 1
             length++;
         }
         return length;
