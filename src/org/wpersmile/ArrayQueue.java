@@ -3,9 +3,9 @@ package org.wpersmile;
 import java.util.ArrayList;
 
 /**
+ * @author wperSmile
  * @param <E>
  *     指定传入数据类型
- * @author wperSmile
  */
 public class ArrayQueue<E> {
     private Queue<E> queue;

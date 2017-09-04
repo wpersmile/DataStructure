@@ -1,15 +1,26 @@
 package org.wpersmile;
 import java.util.ArrayList;
 
+/**
+ * 无头节点单链表实现
+ * @author wperSmile
+ * @param <E>
+ *     指定传入数据类型
+ */
 public class SigleLinkedList<E> {
     private Node<E> first;
     private Node<E> next;
+
     //构造空链表
     public SigleLinkedList(){
         this.first=null;
         this.next=null;
     }
 
+    /**
+     * 定义一个链表结点
+     * @param <E>
+     */
     private static class Node<E>{
         E elem;
         Node<E> next;
@@ -18,12 +29,32 @@ public class SigleLinkedList<E> {
             this.next=next;
         }
     }
+
+    /**
+     * 判断链表是否为空
+     * @return
+     * ture：链表为空
+     * flase:链表有值
+     */
     public Boolean isEmpty(){
         if(this.first==null){
             return true;
         }
         return false;
     }
+
+    /**
+     * 清空链表
+     */
+    public void clean(){
+        this.first=null;
+    }
+
+    /**
+     * 添加新元素
+     *如果队列为空，则新结点为首结点，否则把新结点指向队列最后一个结点
+     * @param e
+     */
     public void add(E e){
         Node<E> newNode=new Node<>(e,next);
         if (isEmpty()){
@@ -39,7 +70,7 @@ public class SigleLinkedList<E> {
     }
 
     /**
-     *
+     *在指定位置插入元素
      * @param index  index为插入元素索引位置
      * @param e 插入元素e，插入点为索引位置之后
      */
@@ -58,19 +89,25 @@ public class SigleLinkedList<E> {
         }
     }
     /**
-     *
+     *在指定位置删除元素
+     * 从 0 开始
      * @param index  index为删除元素索引位置
      */
     public void deleteIndex(int index){
         Node<E> p=this.first;
-        int count=1;
-        while (p.next!=null){
-            count++;
-            if(count==index){
-                p.next=p.next.next;
-                break;
+        int count=0;
+        if (p!=null){
+            if(index==0){
+                this.first=p.next;
             }
-            p=p.next;
+            while (p.next!=null){
+                count++;
+                if(count==index){
+                    p.next=p.next.next;
+                    break;
+                }
+                p=p.next;
+            }
         }
     }
 
@@ -81,6 +118,9 @@ public class SigleLinkedList<E> {
     @Override
     public String toString(){
         Node<E> p=this.first;
+        if (p==null){
+            return "[]";
+        }
         String str="[";
         while (p.next!=null){
             str+=p.elem;
@@ -91,6 +131,9 @@ public class SigleLinkedList<E> {
         return str;
     }
 
+    /**
+     * 链表转数组
+     */
     public void toArray(){
         Node<E> p=this.first;
         ArrayList<E> arrayList=new ArrayList<E>();
@@ -99,29 +142,25 @@ public class SigleLinkedList<E> {
             p=p.next;
         }
         System.out.print(arrayList.toString());
-
     }
 
     /**
-     * 清空链表
-     */
-    public void clean(){
-        this.first=null;
-    }
-    /**
-     * 单链表反转
+     * 单链表反转（数组实现）
+     * 思路：将链表元素输入到数组中，然后清空原来队列，最后将数组倒序输出到链表中。
      */
     public void reLinedList(){
         Node<E> p=this.first;
-        ArrayList<E> arrayList=new ArrayList<E>();
-        while (p.next!=null){
+        if (p!=null){
+            ArrayList<E> arrayList=new ArrayList<E>();
+            while (p.next!=null){
+                arrayList.add(p.elem);
+                p=p.next;
+            }
             arrayList.add(p.elem);
-            p=p.next;
-        }
-        arrayList.add(p.elem);
-        clean();
-        for (int i=arrayList.size()-1;i>=0;i--){
-            add(arrayList.get(i));
+            clean();
+            for (int i=arrayList.size()-1;i>=0;i--){
+                add(arrayList.get(i));
+            }
         }
     }
 
