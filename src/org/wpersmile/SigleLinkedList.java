@@ -117,21 +117,21 @@ public class SigleLinkedList<E> {
      * 获取链表长度
      * @return
      */
-    public int lenght(){
-        int lenght=0;
+    public int length(){
+        int length=0;
         Node<E> p=this.first;
         if (p==null){
             return 0;
         }
         else {
             while (p.next!=null){
-                lenght++;
+                length++;
                 p=p.next;
             }
             //while循环少了链表最后一个元素的，应该还要多 + 1
-            lenght++;
+            length++;
         }
-        return lenght;
+        return length;
     }
 
     /**
