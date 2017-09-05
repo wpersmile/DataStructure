@@ -136,9 +136,10 @@ public class SigleLinkedList<E> {
 
     /**
      * 链表转数组
+     *@return
      */
 
-    public void toArray(){
+    public ArrayList toArray(){
         Node<E> p=this.first;
         ArrayList<E> arrayList=new ArrayList<E>();
         if (p!=null){
@@ -148,7 +149,7 @@ public class SigleLinkedList<E> {
             }
             arrayList.add(p.elem);
         }
-        System.out.println(arrayList.toString());
+        return arrayList;
     }
 
     /**
@@ -215,5 +216,55 @@ public class SigleLinkedList<E> {
         }
         str+=p.elem+"]";
         return str;
+    }
+
+    /**
+     * 用于查询元素e是否在队列中存在
+     * @param e
+     * @return
+     */
+    public Boolean isExists(E e){
+        Node<E> p=this.first;
+        if(p==null){
+            return false;
+        }
+        else {
+            while(p.next!=null){
+                if (e.equals(p.elem)){
+                    return true;
+                }
+                p=p.next;
+            }
+            if (e.equals(p.elem)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 统计elem元素在队列中出现的个数
+     * @param e
+     * @return
+     */
+    public int countElem(E e){
+        int count=0;
+        Node<E> p=this.first;
+        if(p==null){
+            return count;
+        }
+        else {
+            while(p.next!=null){
+                if (e.equals(p.elem)){
+                    count++;
+                }
+                p=p.next;
+            }
+            if (e.equals(p.elem)){
+                count++;
+            }
+        }
+        return count;
     }
 }
