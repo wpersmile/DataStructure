@@ -7,12 +7,12 @@ import java.util.ArrayList;
  * @param <E>
  *     指定传入数据类型
  */
-public class SigleLinkedList<E> {
+public class SingleLinkedList<E> {
     private Node<E> first;
     private Node<E> next;
 
     //构造空链表
-    public SigleLinkedList(){
+    public SingleLinkedList(){
         this.first=null;
         this.next=null;
     }
@@ -114,8 +114,7 @@ public class SigleLinkedList<E> {
     }
 
     /**
-     * 获取链表长度
-     * @return
+     * @return 获取链表长度
      */
     public int length(){
         int length=0;
@@ -136,7 +135,7 @@ public class SigleLinkedList<E> {
 
     /**
      * 链表转数组
-     *@return
+     *@return 返回转换好的ArrayList
      */
 
     public ArrayList toArray(){
@@ -199,8 +198,8 @@ public class SigleLinkedList<E> {
     }
 
     /**
-     * 返回链表所有元素集合
-     * @return
+     *
+     * @return 返回链表所有元素集合
      */
     @Override
     public String toString(){
@@ -221,7 +220,7 @@ public class SigleLinkedList<E> {
     /**
      * 用于查询元素e是否在队列中存在
      * @param e
-     * @return
+     * @return 存在：true 不存在：false
      */
     public Boolean isExists(E e){
         Node<E> p=this.first;
@@ -246,7 +245,7 @@ public class SigleLinkedList<E> {
     /**
      * 统计elem元素在队列中出现的个数
      * @param e
-     * @return
+     * @return 返回次数
      */
     public int countElem(E e){
         int count=0;
@@ -266,5 +265,27 @@ public class SigleLinkedList<E> {
             }
         }
         return count;
+    }
+
+    /**
+     * 链表拼接，将其他链表拼接到当前链表最后一个元素之后
+     * @param A 链表A
+     * @param B 链表B
+     * @return  返回合并后的链表
+     */
+    public SingleLinkedList<E> splice(SingleLinkedList<E> A, SingleLinkedList<E> B){
+        Node<E> p1=A.first;
+        if (p1!=null){
+            while (p1.next!=null){
+                p1=p1.next;
+            }
+            p1.next=B.first;
+        }
+        else {
+            if (B.first!=null){
+                A.first=B.first;
+            }
+        }
+        return A;
     }
 }
