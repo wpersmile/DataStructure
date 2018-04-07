@@ -36,6 +36,7 @@ public class Sort {
 
     /**
      * 选择排序-升序
+     * 时间复杂度O(n^2)
      * @param arr 待排序的数组
      * @return 排序后的数组
      */
