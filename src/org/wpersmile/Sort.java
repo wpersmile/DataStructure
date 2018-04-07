@@ -45,7 +45,7 @@ public class Sort {
         int min;
         //记录最小值在数组中的位置
         int location=-1;
-        //若初始位置的值不是最小值，则更改为false,默认true
+        //若初始位置的值不是最小值，则更改为false
         boolean state;
         for (int i=0;i<arr.length;i++){
             min=arr[i];
