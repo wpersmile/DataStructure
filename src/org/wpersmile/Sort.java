@@ -5,10 +5,10 @@ public class Sort {
     /**
      * 冒泡排序-升序
      * 时间复杂度O(n)-O(n^2)
-     * @param arr int类型数组
+     * @param arr 待排序的数组
      * @return 排序好的数组
      */
-    private static int[] bubbleSort1(int[] arr){
+    public static int[] bubbleSort(int[] arr){
         //数据交换中间变量
         int temp;
         //用于判断数组元素是否进行了次序交换
@@ -28,6 +28,41 @@ public class Sort {
             //如果该轮没有比较，表示已经排序完毕 返回该数组
             if (!state){
                 return arr;
+            }
+        }
+        return arr;
+    }
+
+
+    /**
+     * 选择排序-升序
+     * @param arr 待排序的数组
+     * @return 排序后的数组
+     */
+    public static int[] selectionSort(int[] arr){
+        //记录排序一轮排序中的最小值
+        int min;
+        //记录最小值在数组中的位置
+        int location=-1;
+        //若初始位置的值不是最小值，则更改为false,默认true
+        boolean state;
+        for (int i=0;i<arr.length;i++){
+            min=arr[i];
+            state=true;
+            for (int j=i+1;j<arr.length;j++){
+                //若存在比min还小的元素，则将最小元素置为min,并记录位置，更该state属性
+                if (min>arr[j]){
+                    min=arr[j];
+                    location=j;
+                    state=false;
+                }
+            }
+            //如果state被改变过，则进行元素交换
+            if (!state){
+                int temp;
+                temp=arr[i];
+                arr[i]=arr[location];
+                arr[location]=temp;
             }
         }
         return arr;
