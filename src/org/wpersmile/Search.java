@@ -11,7 +11,7 @@ public class Search {
      * @return 如果找到返回该元素的下标位置
      *               反之返回-1
      */
-    public int binarySearch(int arr[],int left,int right,int searchNum){
+    public static int binarySearch(int arr[],int left,int right,int searchNum){
 
         if(left>right){
             return -1;

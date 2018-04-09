@@ -38,7 +38,7 @@ public class Sort {
      * 选择排序-升序
      * 时间复杂度O(n^2)
      * @param arr 待排序的数组
-     * @return 排序后的数组
+     * @return 排序好的数组
      */
     public static int[] selectionSort(int[] arr){
         //记录排序一轮排序中的最小值
@@ -64,6 +64,28 @@ public class Sort {
                 temp=arr[i];
                 arr[i]=arr[location];
                 arr[location]=temp;
+            }
+        }
+        return arr;
+    }
+
+    /**
+     * 直接插入排序-升序 时间复杂度
+     * 时间复杂度O(n^2)
+     * @param arr 待排序的数组
+     * @return 排序后的数组
+     */
+    public static int[] insertSort(int[] arr){
+        //默认第一个元素是有序的
+        for (int i=1;i<arr.length;i++){
+            int temp;
+            for (int j=0;j<i;j++){
+                //如果当前元素比与他比较的元素小，则交换他们的次序。
+                if (arr[i]<arr[j]){
+                    temp=arr[j];
+                    arr[j]=arr[i];
+                    arr[i]=temp;
+                }
             }
         }
         return arr;
